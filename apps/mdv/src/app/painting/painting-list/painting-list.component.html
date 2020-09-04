@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Paintings</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let painting of paintings"
+        class="mat-list-option"
+        (click)="select(painting)"
+      >
+        <h3 mat-line>
+          {{ painting.title }}
+        </h3>
+        <p mat-line>
+          {{ painting.description }}
+        </p>
+        <button
+          mat-icon-button
+          (click)="delete(painting); $event.stopImmediatePropagation()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

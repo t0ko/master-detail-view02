@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@master-detail-view02/core-data": ["libs/core-data/src/index.ts"],
+      "@master-detail-view02/material": ["libs/material/src/index.ts"],
+      "@master-detail-view02/ui-lib": ["libs/ui-lib/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,0 +1,21 @@
+<div class="container d-flex mt-3">
+  <div class="col-6">
+    <master-detail-view02-painting-list
+      [paintings]="paintings$ | async"
+      (selectedPainting)="selectPainting($event)"
+      (deletePainting)="deletePainting($event)"
+    >
+    </master-detail-view02-painting-list>
+  </div>
+
+  <div class="col-6">
+    <master-detail-view02-painting-detail
+      [form]="form"
+      [selectedPainting]="selectedPainting"
+      (cancelPainting)="cancelPainting()"
+      (savePainting)="savePainting($event)"
+      (fileUpload)="handleFileUpload($event)"
+      (imageDelete)="deleteImage()"
+    ></master-detail-view02-painting-detail>
+  </div>
+</div>

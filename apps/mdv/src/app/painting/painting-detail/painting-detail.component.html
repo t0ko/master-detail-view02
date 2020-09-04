@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        {{ paintingTitle }}
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="save(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="w-100 d-flex">
+        <input
+          matInput
+          placeholder="title"
+          type="text"
+          name="title"
+          formControlName="title"
+        />
+        <mat-error *ngIf="form.get('title').hasError('required')"
+          >Required Field</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="w-100 d-flex">
+        <textarea
+          matInput
+          placeholder="description"
+          type="text"
+          name="description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <div>
+        <div class="imageContainer" *ngIf="imageExists; else elseFileInput">
+          <div class="imageWrapper">
+            <button class="deleteImage" mat-icon-button (click)="deleteImage()">
+              <mat-icon> clear </mat-icon>
+            </button>
+            <img
+              [src]="imageData"
+              class="paintingImage"
+              height="250"
+              width="250"
+            />
+          </div>
+        </div>
+        <ng-template #elseFileInput>
+          <input
+            type="file"
+            name="file"
+            accept="image/*"
+            (change)="upload($event)"
+          />
+        </ng-template>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        type="submit"
+        mat-button
+        color="primary"
+        [disabled]="form.invalid"
+      >
+        Save
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
