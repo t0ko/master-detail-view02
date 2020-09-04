@@ -1,5 +1,5 @@
-<mat-card>
-  <mat-card-header>
+<mat-card id="paintingDetailsContainer">
+  <mat-card-header class="justify-content-center">
     <mat-card-title>
       <h1>
         {{ paintingTitle }}
@@ -11,8 +11,8 @@
     #formDirective="ngForm"
     (ngSubmit)="save(formDirective)"
   >
-    <mat-card-content>
-      <mat-form-field class="w-100 d-flex">
+    <mat-card-content class="pantingDetailsContent">
+      <mat-form-field class="w-100 d-flex" appearance="outline">
         <input
           matInput
           placeholder="title"
@@ -25,7 +25,7 @@
         >
       </mat-form-field>
 
-      <mat-form-field class="w-100 d-flex">
+      <mat-form-field class="w-100 d-flex" appearance="outline">
         <textarea
           matInput
           placeholder="description"
@@ -34,7 +34,6 @@
           formControlName="description"
         ></textarea>
       </mat-form-field>
-      <div>
         <div class="imageContainer" *ngIf="imageExists; else elseFileInput">
           <div class="imageWrapper">
             <button class="deleteImage" mat-icon-button (click)="deleteImage()">
@@ -49,19 +48,24 @@
           </div>
         </div>
         <ng-template #elseFileInput>
-          <input
-            type="file"
-            name="file"
-            accept="image/*"
-            (change)="upload($event)"
-          />
+
+          <button mat-raised-button color="primary" (click)="fileInput.click(); $event.stopImmediatePropagation()">
+            <span>Select a image!</span>
+            <input
+              #fileInput
+              type="file"
+              name="file"
+              accept="image/*"
+              class="d-none"
+              (change)="upload($event)"
+            />
+          </button>
         </ng-template>
-      </div>
     </mat-card-content>
     <mat-card-actions>
       <button
         type="submit"
-        mat-button
+        mat-raised-button
         color="primary"
         [disabled]="form.invalid"
       >

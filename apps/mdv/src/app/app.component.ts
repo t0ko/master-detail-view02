@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mdv02';
-  links = [{ path: '/painting', icon: 'assignment_ind', title: 'Paintings' }];
+  links = [
+    { path: '/painting', icon: 'assignment_ind', title: 'Paintings' }
+  ];
 }

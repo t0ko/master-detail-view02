@@ -1,9 +1,29 @@
-.paintingImage {
-  height: auto;
-  width: 50%;
-  position: relative;
-}
+#paintingDetailsContainer {
+  .pantingDetailsContent {
+    display: flex;
+    flex-direction: column;
 
-.full-width {
-  width: 100%;
+    .mat-form-field-wrapper {
+      width: 100%;
+    }
+  }
+
+  .imageContainer {
+    align-self: center;
+  }
+
+  .imageWrapper {
+    position: relative;
+    display: inline-block;
+    border: 1px, solid, black;
+  }
+
+  .deleteImage {
+    position: absolute;
+    right: 0;
+  }
+
+  .full-width {
+    width: 100%;
+  }
 }

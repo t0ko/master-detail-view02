@@ -4,7 +4,7 @@ import { PaintingComponent } from './painting/painting.component';
 
 const routes: Routes = [
   { path: 'painting', component: PaintingComponent },
-  { path: '**', redirectTo: 'painting' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

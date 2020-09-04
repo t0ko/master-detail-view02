@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
 import { Painting } from '@master-detail-view02/core-data';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 
@@ -6,8 +6,9 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
   selector: 'master-detail-view02-painting-detail',
   templateUrl: './painting-detail.component.html',
   styleUrls: ['./painting-detail.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class PaintingDetailComponent implements OnInit {
+export class PaintingDetailComponent {
   currentPainting: Painting;
   orginalTitle: string;
 
@@ -21,10 +22,6 @@ export class PaintingDetailComponent implements OnInit {
   @Output() fileUpload = new EventEmitter();
   @Output() imageDelete = new EventEmitter();
   constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.form);
-  }
 
   get paintingTitle() {
     return !this.orginalTitle ? 'Create an Artwork!' : this.orginalTitle;
@@ -43,9 +40,10 @@ export class PaintingDetailComponent implements OnInit {
   }
 
   save(formDirective: FormGroupDirective) {
-    this.savePainting.emit(formDirective);
-    formDirective.resetForm();
-    console.log(formDirective);
+    if (formDirective.valid) {
+      this.savePainting.emit(formDirective);
+      formDirective.resetForm();
+    }
   }
 
   cancel() {
@@ -54,7 +52,6 @@ export class PaintingDetailComponent implements OnInit {
 
   upload(image) {
     this.fileUpload.emit(image);
-    console.log(image);
   }
 
   deleteImage() {
