@@ -39,7 +39,6 @@ export class PaintingComponent implements OnInit {
 
   loadPaintings() {
     this.paintings$ = this.paintingService.getAll();
-    console.log(this.paintingService.getAll());
   }
 
   selectPainting(painting: Painting) {
@@ -92,7 +91,7 @@ export class PaintingComponent implements OnInit {
       id: [''],
       description: [''],
       title: ['', Validators.required],
-      image: [''],
+      image: ['', Validators.required],
     });
   }
 

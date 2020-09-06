@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header class="justify-content-center">
     <mat-card-title>
       <h1>Paintings</h1>
     </mat-card-title>
@@ -7,9 +7,10 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item
-        *ngFor="let painting of paintings"
-        class="mat-list-option"
+        *ngFor="let painting of paintings; let last = last"
+        class="mat-list-option border-bottom"
         (click)="select(painting)"
+        [ngClass]="{'no-bottom-border': last}"
       >
         <h3 mat-line>
           {{ painting.title }}
